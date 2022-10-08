@@ -1,14 +1,16 @@
 import styles from './nav.module.css';
 import { Link } from "react-router-dom";
+import { MdHome } from 'react-icons/md';
+import { FaRandom } from 'react-icons/fa';
 
 export const Nav = () => {
     return (
         <div className={styles.container}>
             <Link to="/" className={styles.link}>
-                Home
+                <MdHome /> Home
             </Link>
             <Link to="/random" className={styles.link}>
-                Random
+                <FaRandom />Random
             </Link>
         </div>
     )

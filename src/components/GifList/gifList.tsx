@@ -4,6 +4,7 @@ import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 import useFetch, { GifData } from '../../hooks/useFetch';
 import { Spinner } from '../Spinner/spinner';
 import { GifItem } from './GifItem/gifItem';
+import { GoSearch } from "react-icons/go";
 
 export const GifList = () => {
     const [inputValue, setInputValue] = useState<string>("");
@@ -38,7 +39,7 @@ export const GifList = () => {
                     placeholder={"search a gif"}
                 />
                 <button onClick={handleSearch}>
-                    <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" />
+                    <GoSearch style={{ fontSize: "20px:" }} />
                 </button>
             </div>
             <ul className={styles.box}>
