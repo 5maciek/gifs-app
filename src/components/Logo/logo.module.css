@@ -1,0 +1,15 @@
+.container h1 {
+    display: inline;
+    position: relative;
+    font: 100px Helvetica, Sans-Serif;
+    letter-spacing: 5px;
+    color: #F4D58D
+}
+
+.container h1:after {
+    content: "GIFs";
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    color: #FF715B
+}
