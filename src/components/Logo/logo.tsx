@@ -1,3 +1,4 @@
+import { Nav } from '../Nav/nav';
 import styles from './logo.module.css';
 
 export const Logo = () => {
@@ -5,7 +6,8 @@ export const Logo = () => {
         <div className={styles.container}>
             <h1>
                 GIFs
-            </h1 >
+            </h1>
+            <Nav />
         </div>
     );
 }

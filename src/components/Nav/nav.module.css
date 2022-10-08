@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.container .link {
+    color: #F7CAC9;
+    font-size: 20px;
+    text-decoration: none;
+}
