@@ -1,0 +1,13 @@
+.container {
+    margin-top: 50px;
+}
+
+.container h1 {
+    font-size: 64px;
+    color: white;
+}
+
+.container .link {
+    font-size: 28px;
+    color: white;
+}
