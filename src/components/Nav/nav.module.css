@@ -7,6 +7,8 @@
 }
 
 .container .link {
+    display: flex;
+    gap: 5px;
     color: #F7CAC9;
     font-size: 20px;
     text-decoration: none;

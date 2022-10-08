@@ -1,9 +1,10 @@
 .card {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 30px;
-    height: 250px;
+    height: 300px;
     width: 300px;
     background-color: rgba(0, 0, 0, 0.6);
 }
@@ -12,4 +13,13 @@
     max-height: 250px;
     max-width: 250px;
     object-fit: contain;
+}
+
+.card button {
+    margin-top: 10px;
+    margin-left: 25px;
+    align-self: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
