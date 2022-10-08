@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 20px 0;
+}
+
+.input-container input {
+    height: 40px;
+    width: 350px;
+    font-size: 20px;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+@media (max-width: 768px) {
+    .input-container input {
+        width: 250px;
+    }
+}
+
+.input-container button {
+    height: 46px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.container .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    height: 250px;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.container .card img {
+    max-height: 250px;
+    max-width: 250px;
+    object-fit: contain;
+}
