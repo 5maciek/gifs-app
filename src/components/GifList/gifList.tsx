@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './gifList.module.css';
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 import useFetch, { GifData } from '../../hooks/useFetch';
+import { Spinner } from '../Spinner/spinner';
 
 export const GifList = () => {
     const [inputValue, setInputValue] = useState<string>("");
@@ -47,7 +48,7 @@ export const GifList = () => {
                         </li>
                     )
                 })}
-                <div ref={loadMoreRef}>{loading ? <div className="loader"></div> : "no data more"}</div>
+                <div ref={loadMoreRef}>{loading ? <Spinner /> : null}</div>
             </ul>
         </div>
     );
