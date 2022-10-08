@@ -1,0 +1,15 @@
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    height: 250px;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.card img {
+    max-height: 250px;
+    max-width: 250px;
+    object-fit: contain;
+}
