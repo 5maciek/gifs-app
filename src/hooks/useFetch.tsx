@@ -5,7 +5,7 @@ const LIMIT = 5;
 
 export interface GifData {
     id: string;
-    title: string;
+    title?: string;
     images: {
         downsized: {
             url: string;
@@ -13,15 +13,18 @@ export interface GifData {
     }
 }
 
-function useFetch(page: number = 1, serachText?: string) {
+function useFetch(page: number = 1, serachText?: string, random?: boolean) {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState<GifData[]>([]);
 
-    let url = `${BASIC_URL}/trending?api_key=z3TCxWMXI3poet0DNQBeC8RfYrprX7U1&q&limit=${LIMIT}&offset=${page * LIMIT}&rating=G&lang=en`
+    let url = `${BASIC_URL}/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=${LIMIT}&offset=${page * LIMIT}&rating=G&lang=en`
 
     if (serachText) {
-        console.log("maciek", page * LIMIT)
-        url = `${BASIC_URL}/search?api_key=z3TCxWMXI3poet0DNQBeC8RfYrprX7U1&q=${serachText}&limit=${LIMIT}&offset=${page * LIMIT}&rating=G&lang=en`
+        url = `${BASIC_URL}/search?api_key=${process.env.REACT_APP_API_KEY}&q=${serachText}&limit=${LIMIT}&offset=${page * LIMIT}&rating=G&lang=en`
+    }
+
+    if (random) {
+        url = `${BASIC_URL}/random?api_key=${process.env.REACT_APP_API_KEY}`
     }
 
     const getData = async () => {
@@ -32,7 +35,9 @@ function useFetch(page: number = 1, serachText?: string) {
             );
             const data = await response.json();
             const mappedData = Array.isArray(data.data) ? data.data : [data.data];
-            console.log(page, data.data);
+            if (random) {
+                setData(mappedData)
+            }
             setData((prev: GifData[]) => [...prev, ...mappedData]);
             setLoading(false);
         } catch (err) {
@@ -41,15 +46,18 @@ function useFetch(page: number = 1, serachText?: string) {
     }
 
     useEffect(() => {
+        if (serachText && serachText.length > 0) {
+            setData([]);
+            getData();
+        }
         setData([]);
-        getData();
     }, [serachText]);
 
     useEffect(() => {
         getData();
     }, [page]);
 
-    return { loading, data };
+    return { loading, data, getData };
 }
 
 export default useFetch;
