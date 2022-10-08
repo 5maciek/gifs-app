@@ -3,6 +3,7 @@ import styles from './gifList.module.css';
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 import useFetch, { GifData } from '../../hooks/useFetch';
 import { Spinner } from '../Spinner/spinner';
+import { GifItem } from './GifItem/gifItem';
 
 export const GifList = () => {
     const [inputValue, setInputValue] = useState<string>("");
@@ -43,9 +44,7 @@ export const GifList = () => {
             <ul className={styles.box}>
                 {data.map((gif: GifData) => {
                     return (
-                        <li key={gif.id} className={styles.card}>
-                            <img alt={gif.title} src={`${gif.images.downsized.url}`} />
-                        </li>
+                        <GifItem id={gif.id} title={gif.title} images={gif.images} />
                     )
                 })}
                 <div ref={loadMoreRef}>{loading ? <Spinner /> : null}</div>
