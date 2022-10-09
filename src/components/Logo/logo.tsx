@@ -1,4 +1,4 @@
-import { Nav } from '../Nav/nav';
+import { Nav } from '../nav/nav';
 import styles from './logo.module.css';
 
 export const Logo = () => {

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import styles from './gifList.module.css';
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
 import useFetch, { GifData } from '../../hooks/useFetch';
-import { Spinner } from '../Spinner/spinner';
-import { GifItem } from './GifItem/gifItem';
+import { Spinner } from '../spinner/spinner';
+import { GifItem } from './gifItem/gifItem';
 import { GoSearch } from "react-icons/go";
 
 export const GifList = () => {

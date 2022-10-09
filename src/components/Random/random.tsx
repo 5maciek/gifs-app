@@ -1,10 +1,10 @@
 import useFetch from '../../hooks/useFetch';
-import { GifItem } from '../GifList/GifItem/gifItem';
-import { Spinner } from '../Spinner/spinner';
+import { GifItem } from '../gifList/gifItem/gifItem';
+import { Spinner } from '../spinner/spinner';
 import styles from './random.module.css';
 
 export const Random = () => {
-    const { loading, data, getData } = useFetch(1, "", true);
+    const { loading, data, getData } = useFetch();
 
     return (
         <div>

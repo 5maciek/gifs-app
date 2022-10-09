@@ -1,9 +1,10 @@
 import './App.css';
-import { GifList } from './components/GifList/gifList';
-import { Logo } from './components/Logo/logo';
+import { GifList } from './components/gifList/gifList';
+import { Logo } from './components/logo/logo';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Random } from './components/Random/random';
-import { NotFoundPage } from './components/NotFoundPage/notFoundPage';
+import { Random } from './components/random/random';
+import { NotFoundPage } from './components/notFoundPage/notFoundPage';
+import { FavoriteGifs } from './components/favoriteGifs/favoriteGifs';
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<GifList />} />
           <Route path="/404" element={<NotFoundPage />} />
-          <Route path="/random" element={<Random />}>
-          </Route>
+          <Route path="/random" element={<Random />} />
+          <Route path="/favorite" element={<FavoriteGifs />} />
           <Route path="*" element={<Navigate replace to="/404" />} />
         </Routes>
       </BrowserRouter>
@@ -23,3 +24,4 @@ function App() {
 }
 
 export default App;
+
