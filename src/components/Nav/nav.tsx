@@ -10,7 +10,7 @@ export const Nav = () => {
             <Link to="/" className={styles.link}>
                 <MdHome /> Home
             </Link>
-            <Link to="/random" className={styles.link}>
+            <Link aria-label="random" to="/random" className={styles.link}>
                 <FaRandom /> Random
             </Link>
             <Link to="/favorite" className={styles.link}>

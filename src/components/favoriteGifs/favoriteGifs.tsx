@@ -17,13 +17,15 @@ export const FavoriteGifs = () => {
                         <p>You don't have any favorite Gifs yet</p>
                     </div>
                     :
-                    data.map((gif: GifData) => {
-                        return (
-                            <GifItem id={gif.id} title={gif.title} images={gif.images} />
-                        )
-                    }
-                    )}
-        </div >
+                    <ul>
+                        {data.map((gif: GifData) => {
+                            return (
+                                <GifItem id={gif.id} title={gif.title} images={gif.images} />
+                            )
+                        }
+                        )}
+                    </ul>}
+        </div>
     );
 }
 

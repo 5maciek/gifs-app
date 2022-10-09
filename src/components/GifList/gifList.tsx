@@ -48,7 +48,7 @@ export const GifList = () => {
                         <GifItem id={gif.id} title={gif.title} images={gif.images} />
                     )
                 })}
-                <div ref={loadMoreRef}>{loading ? <Spinner /> : null}</div>
+                <div aria-label="lastGif" ref={loadMoreRef}>{loading ? <Spinner /> : null}</div>
             </ul>
         </div>
     );
