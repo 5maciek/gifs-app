@@ -1,0 +1,19 @@
+.container,
+.no-favorites {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.no-favorites {
+    margin-top: 50px;
+    font-size: 30px;
+    color: white;
+}
+
+.no-favorites svg {
+    margin-top: 50px;
+    font-size: 50px;
+}
