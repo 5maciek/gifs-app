@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function getSavedValue(key: string, initialValue: any) {
+function getSavedValue(key: string, initialValue: Function | string) {
     const savedValue = JSON.parse(localStorage.getItem(key) || "false");
     if (savedValue) return savedValue;
 
@@ -8,7 +8,7 @@ function getSavedValue(key: string, initialValue: any) {
     return initialValue
 }
 
-export default function useLocalStorage(key: string, initialValue: any) {
+export default function useLocalStorage(key: string, initialValue: Function | string) {
     const [value, setValue] = useState(() => {
         return getSavedValue(key, initialValue);
     })

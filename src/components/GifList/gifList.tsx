@@ -36,10 +36,10 @@ export const GifList = () => {
                     value={inputValue}
                     onChange={handleInput}
                     onKeyDown={handleKeyPress}
-                    placeholder={"search a gif"}
+                    placeholder={"search a gif and confirm"}
                 />
                 <button onClick={handleSearch}>
-                    <GoSearch style={{ fontSize: "20px:" }} />
+                    <GoSearch style={{ fontSize: "20px" }} />
                 </button>
             </div>
             <ul className={styles.box}>
