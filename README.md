@@ -18,6 +18,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Plan for next features
 1. Add query to suggested input values `api.giphy.com/v1/gifs/search/tags`
 2. Improve styling by adding styled-components and change existing styling
+3. Refactor current test and add new
 
 ## Eventually bugs
 If you see any bugs feel free to contact with me or create a pull request
