@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useLocation } from "react-router-dom";
-import useLocalStorage from './useLocalStorage';
+import { LocalStorageContext } from './localStorageContext';
 
 const BASIC_URL = "https://api.giphy.com/v1/gifs";
 const LIMIT = 5;
@@ -32,7 +32,7 @@ const getUrl = (pathName: string, optionsQuery: string, searchText?: string, ids
 function useFetch(page: number = 1, searchText?: string) {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState<GifData[]>([]);
-    const [ids] = useLocalStorage("favorite", "");
+    const { ids } = useContext(LocalStorageContext);
 
     const location = useLocation();
 
@@ -42,6 +42,7 @@ function useFetch(page: number = 1, searchText?: string) {
 
     const getData = async () => {
         if (ids.length === 0 && location.pathname === "/favorite") return;
+
         try {
             setLoading(true);
             const response = await fetch(url);

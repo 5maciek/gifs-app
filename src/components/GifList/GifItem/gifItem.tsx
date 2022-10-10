@@ -2,20 +2,21 @@ import styles from './gifItem.module.css';
 import { GifData } from '../../../hooks/useFetch';
 import { AiOutlineLink } from "react-icons/ai";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import useLocalStorage from '../../../hooks/useLocalStorage';
+import { LocalStorageContext } from '../../../hooks/localStorageContext';
+import { useContext } from 'react';
 
 export const GifItem = (props: GifData) => {
     const { id, title, images } = props;
-    const [ids, SetIds] = useLocalStorage("favorite", "");
+    const { ids, setIds } = useContext(LocalStorageContext);
     const isFavorites = ids.includes(id);
 
     const handleFavorite = () => {
         if (!isFavorites) {
             const newIds = [...ids, id];
-            SetIds(newIds)
+            setIds(newIds)
         } else {
             const newIds = ids.filter((item: string) => item !== id);
-            SetIds(newIds)
+            setIds(newIds)
         }
     }
 
