@@ -1,14 +1,20 @@
 describe('random page', () => {
-    it('should show one random gif', () => {
+    beforeEach(() => {
         cy.visit('http://localhost:3000/random')
-        cy.wait(500);
-        cy.get("li").should("exist");
+        cy.intercept({
+            method: "GET",
+            url: `https://api.giphy.com/v1/gifs/random?api_key=z3TCxWMXI3poet0DNQBeC8RfYrprX7U1`
+        }).as("dataGetFirst");
+        cy.wait("@dataGetFirst");
+    })
+
+    it("should contain a gif in the page", () => {
+        cy.get("img").should("exist");
     })
 
     it('should change gif when click random button', () => {
-        cy.visit('http://localhost:3000/random')
-        cy.wait(500);
         let imgSrc = "";
+        cy.wait(2000);
         cy.document().then((doc) => {
             imgSrc = doc.querySelector("img").src;
         })
