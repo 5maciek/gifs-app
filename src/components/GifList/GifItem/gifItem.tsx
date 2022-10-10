@@ -20,7 +20,7 @@ export const GifItem = (props: GifData) => {
     }
 
     return (
-        <li key={id} className={styles.card}>
+        <li className={styles.card}>
             <img alt={title} src={`${images.downsized.url}`} />
             <div className={styles.icons}>
                 <a onClick={() => { navigator.clipboard.writeText(images.downsized.url); alert("You have copied url to clipboard"); }}>

@@ -15,7 +15,21 @@ export interface GifData {
     }
 }
 
-function useFetch(page: number = 1, serachText?: string) {
+const getUrl = (pathName: string, optionsQuery: string, searchText?: string, ids?: string[]) => {
+    let url = `${BASIC_URL}/trending?api_key=${process.env.REACT_APP_API_KEY}${optionsQuery}`
+
+    if (searchText) {
+        url = `${BASIC_URL}/search?api_key=${process.env.REACT_APP_API_KEY}&q=${searchText}${optionsQuery}`
+    } else if (pathName === "/random") {
+        url = `${BASIC_URL}/random?api_key=${process.env.REACT_APP_API_KEY}`
+    } else if (pathName === "/favorite" && ids && ids.length > 0) {
+        url = `${BASIC_URL}?ids=${ids.join(",")}&api_key=${process.env.REACT_APP_API_KEY}`
+    }
+
+    return url;
+}
+
+function useFetch(page: number = 1, searchText?: string) {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState<GifData[]>([]);
     const [ids] = useLocalStorage("favorite", "");
@@ -24,26 +38,13 @@ function useFetch(page: number = 1, serachText?: string) {
 
     const OPTIONS_QUERY = `&limit=${LIMIT}&offset=${page * LIMIT}&rating=G&lang=en`;
 
-    let url = `${BASIC_URL}/trending?api_key=${process.env.REACT_APP_API_KEY}${OPTIONS_QUERY}`
-
-    if (serachText) {
-        url = `${BASIC_URL}/search?api_key=${process.env.REACT_APP_API_KEY}&q=${serachText}${OPTIONS_QUERY}`
-    } else if (location.pathname === "/random") {
-        url = `${BASIC_URL}/random?api_key=${process.env.REACT_APP_API_KEY}`
-    } else if (location.pathname === "/favorite" && ids.length > 0) {
-        url = `${BASIC_URL}?ids=${ids.join(",")}&api_key=${process.env.REACT_APP_API_KEY}`
-    }
+    const url = getUrl(location.pathname, OPTIONS_QUERY, searchText, ids);
 
     const getData = async () => {
-        if (ids.length === 0 && location.pathname === "/favorite") {
-            setData([]);
-            return;
-        }
+        if (ids.length === 0 && location.pathname === "/favorite") return;
         try {
             setLoading(true);
-            const response = await fetch(
-                url
-            );
+            const response = await fetch(url);
             const data = await response.json();
             const mappedData = Array.isArray(data.data) ? data.data : [data.data];
             if (SINGLE_FETCH_ROUTES.includes(location.pathname)) {
@@ -58,15 +59,14 @@ function useFetch(page: number = 1, serachText?: string) {
     }
 
     useEffect(() => {
-        if (serachText && serachText.length > 0) {
-            setData([]);
+        setData([]);
+        if (searchText && searchText.length > 0) {
             getData();
         }
-        setData([]);
-    }, [serachText]);
+    }, [searchText]);
 
     useEffect(() => {
-        getData();
+        !loading && getData();
     }, [page]);
 
     return { loading, data, getData };

@@ -7,11 +7,18 @@ describe('favorite page', () => {
         localStorage.setItem("favorite", JSON.stringify(""));
         cy.get("p").contains("You don't have any favorite Gifs yet");
     })
+})
+
+describe('favorite page', () => {
+    const testIds = ["rYItGMExSlMyMsyYU5", "KdC9XVrVYOVu6zZiMH"];
+
+    before(() => {
+        cy.visit('http://localhost:3000/favorite')
+        localStorage.setItem("favorite", JSON.stringify(testIds));
+    })
 
     it('should show as much gifs are in local storage ids', () => {
-        const testIds = ["rYItGMExSlMyMsyYU5", "KdC9XVrVYOVu6zZiMH"];
-        localStorage.setItem("favorite", JSON.stringify(testIds));
-        cy.wait(500);
+        cy.wait(2500);
         cy.get("li").should("have.length", testIds.length);
     })
 })

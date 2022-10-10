@@ -20,7 +20,7 @@ export const FavoriteGifs = () => {
                     <ul>
                         {data.map((gif: GifData) => {
                             return (
-                                <GifItem id={gif.id} title={gif.title} images={gif.images} />
+                                <GifItem key={gif.id} id={gif.id} title={gif.title} images={gif.images} />
                             )
                         }
                         )}

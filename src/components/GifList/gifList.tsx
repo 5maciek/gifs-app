@@ -45,7 +45,7 @@ export const GifList = () => {
             <ul className={styles.box}>
                 {data.map((gif: GifData) => {
                     return (
-                        <GifItem id={gif.id} title={gif.title} images={gif.images} />
+                        <GifItem key={gif.id} id={gif.id} title={gif.title} images={gif.images} />
                     )
                 })}
                 <div aria-label="lastGif" ref={loadMoreRef}>{loading ? <Spinner /> : null}</div>

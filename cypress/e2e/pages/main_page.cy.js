@@ -20,14 +20,14 @@ describe('main page', () => {
     cy.get("input").type('kittens')
     cy.get("input").type("{enter}")
     cy.wait(500)
-    cy.get("li").should('exist').should('have.length', 10)
+    cy.get("li").should('exist').should('have.length', 5)
   })
 
   it('should scroll and load more gifs', () => {
     cy.wait(1000)
     cy.get('[aria-label=lastGif]').scrollIntoView({ duration: 0 })
     cy.wait(500)
-    cy.get("li").should('exist').should('have.length', 15)
+    cy.get("li").should('exist').should('have.length', 10)
   })
 
   // it('can add new todo items', () => {
