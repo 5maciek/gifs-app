@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { useLocation } from "react-router-dom";
-import { LocalStorageContext } from './localStorageContext';
+import { LocalStorageContext } from '../context/localStorageContext';
 
 const BASIC_URL = "https://api.giphy.com/v1/gifs";
 const LIMIT = 5;

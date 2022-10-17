@@ -2,7 +2,7 @@ import styles from './gifItem.module.css';
 import { GifData } from '../../../hooks/useFetch';
 import { AiOutlineLink } from "react-icons/ai";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { LocalStorageContext } from '../../../hooks/localStorageContext';
+import { LocalStorageContext } from '../../../context/localStorageContext';
 import { useContext } from 'react';
 
 export const GifItem = (props: GifData) => {
