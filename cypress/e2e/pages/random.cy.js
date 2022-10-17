@@ -3,7 +3,7 @@ describe('random page', () => {
         cy.visit('http://localhost:3000/random')
         cy.intercept({
             method: "GET",
-            url: `https://api.giphy.com/v1/gifs/random?api_key=z3TCxWMXI3poet0DNQBeC8RfYrprX7U1`
+            url: `https://api.giphy.com/v1/gifs/random?api_key=${process.env.REACT_APP_API_KEY}`
         }).as("dataGetFirst");
         cy.wait("@dataGetFirst");
     })
